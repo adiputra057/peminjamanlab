@@ -1,11 +1,12 @@
 <?php
-$host = getenv('MYSQLHOST');
-$user = getenv('MYSQLUSER');
-$pass = getenv('MYSQLPASSWORD');
-$db   = getenv('MYSQLDATABASE');
-$port = getenv('MYSQLPORT');
+// Mengambil data dari Environment Variables Railway
+$host = $_ENV['MYSQLHOST'] ?? 'localhost';
+$user = $_ENV['MYSQLUSER'] ?? 'root';
+$pass = $_ENV['MYSQLPASSWORD'] ?? '';
+$db   = $_ENV['MYSQLDATABASE'] ?? '';
+$port = $_ENV['MYSQLPORT'] ?? 3306;
 
-// Pastikan menyertakan $port agar tidak lari ke socket default
+// Eksekusi koneksi
 $conn = new mysqli($host, $user, $pass, $db, $port);
 
 if ($conn->connect_error) {
