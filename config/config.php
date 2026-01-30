@@ -1,12 +1,12 @@
 <?php
-// Mengambil data dari Environment Variables Railway
-$host = $_ENV['MYSQLHOST'] ?? 'localhost';
-$user = $_ENV['MYSQLUSER'] ?? 'root';
-$pass = $_ENV['MYSQLPASSWORD'] ?? '';
-$db   = $_ENV['MYSQLDATABASE'] ?? '';
-$port = $_ENV['MYSQLPORT'] ?? 3306;
+// AMBIL DARI ENV RAILWAY (JANGAN MODIFIKASI STRINGNYA)
+$host = getenv('MYSQLHOST');
+$user = getenv('MYSQLUSER');
+$pass = getenv('MYSQLPASSWORD');
+$db   = getenv('MYSQLDATABASE');
+$port = getenv('MYSQLPORT');
 
-// Eksekusi koneksi
+// Koneksi harus menggunakan variabel di atas
 $conn = new mysqli($host, $user, $pass, $db, $port);
 
 if ($conn->connect_error) {
