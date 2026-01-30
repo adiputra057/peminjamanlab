@@ -1,25 +1,16 @@
 <?php
-// Pastikan kita mengambil NILAI dari variable, bukan teks namanya saja
+// 1. Ambil nilai dari environment variables yang sudah kamu set di dashboard
 $host = getenv('DB_HOST');
 $user = getenv('DB_USER');
 $pass = getenv('DB_PASS');
 $db   = getenv('DB_NAME');
 $port = getenv('DB_PORT');
 
-// SOLUSI ERROR TYPEERROR: Paksa port menjadi angka (integer)
-$port_int = (int)$port; 
+// 2. Paksa port jadi angka
+$port_int = (int)$port;
 
-// Jika port kosong atau gagal jadi angka, gunakan default 3306
-if ($port_int === 0) {
-    $port_int = 3306;
-}
-
-// Gunakan variabel-variabel di atas
+// 3. Masukkan VARIABELNYA ke sini (Tanpa tanda kutip di nama variabelnya)
 $conn = new mysqli($host, $user, $pass, $db, $port_int);
-
-if ($conn->connect_error) {
-  die("Koneksi gagal: " . $conn->connect_error);
-}
 
 if (!defined('BASE_URL')) {
     define('BASE_URL', 'http://localhost/peminjamanlab/');
