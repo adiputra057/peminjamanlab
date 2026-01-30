@@ -1,12 +1,12 @@
 <?php
-// AMBIL DARI ENV RAILWAY (JANGAN MODIFIKASI STRINGNYA)
-$host = getenv('MYSQLHOST');
-$user = getenv('MYSQLUSER');
-$pass = getenv('MYSQLPASSWORD');
-$db   = getenv('MYSQLDATABASE');
-$port = getenv('MYSQLPORT');
+// Sesuaikan dengan nama variabel di Dashboard Railway kamu (DB_HOST, DB_NAME, dll)
+$host = getenv('DB_HOST');
+$user = getenv('DB_USER');
+$pass = getenv('DB_PASS');
+$db   = getenv('DB_NAME');
+$port = getenv('DB_PORT') ?: 3306;
 
-// Koneksi harus menggunakan variabel di atas
+// Lakukan koneksi
 $conn = new mysqli($host, $user, $pass, $db, $port);
 
 if ($conn->connect_error) {
